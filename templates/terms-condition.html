@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="inner-banner">
+<div class="container">
+<div class="inner-title text-center">
+<h3>Terms & Conditions</h3>
+</div>
+</div>
+</div>
+
+
+<div class="terms-conditions-area pt-100 pb-70">
+<div class="container">
+<div class="section-title text-center">
+<div class="bar m-auto"></div>
+</div>
+<div class="row pt-45">
+<div class="col-lg-12">
+<div class="single-content">
+    {% for i in data %}
+    <h3>{{ i.term_conditions_title }}</h3>
+    
+    <p>{{ i.term_conditions_content |safe }}</p>
+    {% endfor %}
+    
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="employers-cv-area">
+<div class="container">
+<div class="employers-cv-bg">
+<div class="row align-items-center">
+<div class="col-lg-8">
+<div class="employers-cv-content">
+<h2>Let Employers Find You</h2>
+<div class="bar"></div>
+<p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="employers-cv-btn">
+{% if request.session.jobseeker %}
+    <a href="/LoginRegisterPopup">
+     Upload Your CV
+     </a>
+ {% else %}
+    <a href="/jobseeker/login">
+     Upload Your CV
+     </a>
+ {% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</html>{% endblock %}

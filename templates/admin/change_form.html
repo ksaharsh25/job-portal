@@ -1,0 +1,14 @@
+{% extends "admin/change_form.html" %}
+
+{% block admin_change_form_document_ready %}
+
+    {{ block.super }}
+    <script>
+    // hide add and change link
+      django.jQuery(document).ready(function() {
+          django.jQuery(".add-related").hide();
+          django.jQuery(".change-related").hide();
+          django.jQuery(".delete-related").hide();
+      });
+    </script>
+{% endblock %}

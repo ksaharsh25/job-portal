@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="user-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="margin-left:auto; margin-right:auto;"> 
+                <div class="user-all-form">
+                    <div class="contact-form">
+                        <h3>Enter Your OTP For {{mobile}}</h3>
+                        <div class="bar"></div>
+                        {% if message %}
+                            <div class="alert alert-{{class}}">
+                                {{message}}
+                            </div>
+                        {% endif %}
+                        <form method='post'>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <input type="text" placeholder="OTP" class="form-control" name="logsecondfield" required>
+                                </div>
+                            </div>
+                            
+                            <div id="signup-button" style="margin-left:auto; margin-right:auto; width:30%;">
+                                <button name="logotpbtn" class="default-btn">Verify OTP</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

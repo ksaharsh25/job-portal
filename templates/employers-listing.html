@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="company-widget-area pt-100 pb-80">
+    <div class="container">
+    <div class="section-title text-center">
+    <h2 style="text-align:center;">Top Company Registered</h2>
+    <div class="bar m-auto"></div>
+    <p class="m-auto" style="text-align:center;">We collect reviews from our users so you can get an honest opinion of what an experience with our website are really like!</p>
+    </div>
+    
+    <div class="row" style="padding-top:5%;">
+    {% for i in data  %}
+    <div class="col-lg-3 col-md-6">
+    <div class="company-card box-shadow">
+    <a href="employer/{{i.id}}"><img src="{{ i.image.url }}" style="width: 17.75rem; height: 4.85rem;" ></a>
+    <h3><a href="employer/{{i.id}}">{{i.employer}}</a></h3>
+    <p><i class="ri-map-pin-line"></i>{{i.city}}</p>
+    <a href="employer/{{i.id}}" class="company-btn">Open Jobs - (40)</a>
+    </div>
+    </div>
+
+
+
+    {% endfor %}
+    
+        <div class="container">
+        <div class="section-title">
+        <h2>Top Employer</h2>
+        
+        <p>We collect reviews from our users so you can get an honest opinion of what an experience with our website are really like!</p>
+        </div>
+        
+        {% for i in data  %}
+        {% comment %} <div class="row pt-15" style="margin-right: 10px"> {% endcomment %}
+            <div class="col-lg-12" style="padding-top:3%;">
+            <div class="job-post-card">
+            <div class="job-post-img">
+            <a href="employer/{{i.id}}"><img src="{{ i.image.url }}" style="width: 16.75rem; height: 8.75rem;" ></a>
+        </div>
+        <div style="padding-left:3rem">
+        <a href="employer/{{i.id}} "><h3>{{i.employer |slice:":800"}}</h3></a>
+        <div class="content">
+        <div class="content-item">
+        <ul class="content-list">
+        <li><i class="ri-briefcase-line"></i> {{i.industry}}</li>
+        <li><i class="ri-map-pin-line"></i> {{i.city}}</b></li>
+        <li><i class="ri-map-pin-line"></i> {{i.state}}</b></li>
+        {% comment %} <li><i class="ri-question-answer-line"></i> <a href="dashboard-messages.html">Direct Message Us</a></li>  {% endcomment %}
+        </ul>
+        </div>
+        
+        <div class="find-jobs-btn">
+            <a href="employer/{{i.id}}" class="default-btn border-radius-5">View Details<i class="ri-send-plane-2-line"></i></a>
+            </div>
+            
+        </div>
+        
+        </div>
+        </div>
+        </div>
+        
+        
+        
+        
+        {% endfor %}
+        
+        <div class="career-area pt-100 pb-70">
+        <div class="container">
+        <div class="row align-items-center">
+        <div class="col-lg-6">
+        <div class="career-img">
+        <div class="row align-items-center">
+        <div class="col-6">
+        <div class="row">
+        <div class="col-10">
+        <div class="images1">
+            {% for i in data2 %}
+            <img src="{{ i.training_image.url }}" alt="PixieJob" style="max-width:255%">
+            {% endfor %}
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <div class="col-lg-6">
+        <div class="career-content pl-20">
+        <div class="section-title">
+        <h2>Quick<b> Career Tips </b> Help You to Get the Best Job That Fits You</h2>
+        
+        </div>
+        <div class="content">
+        <img src="{% static 'assets/images/career/career-user.png' %}" alt="Images">
+        <h3>Aashvni Sharma</h3>
+        <span>Head chef</span>
+        </div>
+        <p>PixieJob is a knowledge platform for the hospitality & travel industry.
+            Professionals use our marketing, revenue management, hotel operations, technology and software insights, strategies and actionable tips to get inspired, optimize revenue, innovate processes and improve customer experience.
+            The strength of PixieJob is that it consists of high-quality and unique knowledge-based content. Every article provides explanatory and actionable solutions.</p>
+        <ul>
+        <li><img src="{% static 'assets/images/user-img/user-img1.jpg' %}" alt="Images"></li>
+        <li><img src="{% static 'assets/images/user-img/user-img2.jpg' %}" alt="Images"></li>
+        <li><img src="{% static 'assets/images/user-img/user-img3.jpg' %}" alt="Images"></li>
+        <li><img src="{% static 'assets/images/user-img/user-img4.jpg' %}" alt="Images"></li>
+        <li><img src="{% static 'assets/images/user-img/user-img5.jpg' %}" alt="Images"></li>
+        <li class="title">1000+ Freelancers Get Result </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        {% if request.session.jobseeker %}
+<div></div>
+                {% else %}
+                <div class="employers-cv-area">
+                    <div class="container">
+                    <div class="employers-cv-bg">
+                    <div class="row align-items-center">
+                    <div class="col-lg-8">
+                    <div class="employers-cv-content">
+                    <h2>Let Employers Find You</h2>
+                    
+                    <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                    <div class="employers-cv-btn">
+                    <form enctype="multipart/form-data" action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                         {{ form.as_p }}
+                     </div>    
+                     
+                                      
+                   <a href="/jobseeker/login">
+                    Upload Your CV
+                    </a>
+                {% endif %}
+ 
+</form>
+</div>  
+            </div>
+            </div>
+            </div>
+            </div>
+            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        </div>
+</div>
+        {% endblock %}

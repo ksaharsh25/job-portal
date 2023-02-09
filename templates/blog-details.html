@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+
+<div class="blog-details-area pt-100 pb-70">
+  <div class="container">
+  <div class="blog-details-content">
+  <div class="content">
+  <h2>{{ data.bloging_title }}</h2>
+  <ul>
+  <li class="images"><img src="/media/{{ data.bloging_image }}" style="width: 11.75rem; height: 5.75rem;" ></a>
+  <li>by Admin</li>
+  <li>
+  <i class="ri-time-line"></i> June 14, 2021
+  </li>
+  <li>
+  </li>
+  </ul>
+  </div>
+  </div>
+  <div class="blog-preview-img">
+  </div>
+  <div class="blog-details-content">
+  <div class="blog-articel">
+  <h3>{{ data.head_title |safe}}</h3>
+  <div class="bar"></div>
+  <p>{{ data.bloging_content |safe}}</p>
+  </div>
+  <blockquote class="blockquote">
+  <p>
+  {{ data.bloging_content |safe}}</p>
+  <span>Thomas Deltom</span>
+  <div class="line1"></div>
+  <div class="line2"></div>
+  </blockquote>
+  <div class="blog-details-list">
+  <h3>What You’ll Learn</h3>
+  <div class="bar"></div>
+  <div class="row">
+  <div class="col-lg-6 col-md-6">
+  <ul>
+  {{ data.bloging_content |safe}}
+  </ul>
+  </div>
+  <div class="col-lg-6 col-md-6">
+  <ul>
+  {{ data.bloging_content |safe}}
+  </ul>
+  </div>
+  </div>
+  </div>
+  <div class="blog-portfolio">
+  <h3>What You’ll Learn</h3>
+  <div class="bar"></div>
+  <div class="row gallery-photo">
+  <div class="col-lg-3 col-6 col-md-3">
+  <div class="blog-portfolio-img">
+  <a href="/media/{{ data.bloging_image }}">
+  <img src="/media/{{ data.bloging_image }}" style="width: 16.75rem; height: 6.75rem;" ></a>
+  </a>
+  </div>
+  </div>
+  <div class="col-lg-3 col-6 col-md-3">
+  <div class="blog-portfolio-img">
+  <a href="/media/{{ data.bloging_image }}">
+  <img src="/media/{{ data.bloging_image }}" style="width: 16.75rem; height: 6.75rem;" ></a>
+  </a>
+  </div>
+  </div>
+  <div class="col-lg-3 col-6 col-md-3">
+  <div class="blog-portfolio-img">
+  <a href="/media/{{ data.bloging_image }}">
+  <img src="/media/{{ data.bloging_image }}" style="width: 16.75rem; height: 6.75rem;" ></a>
+  </a>
+  </div>
+  </div>
+  <div class="col-lg-3 col-6 col-md-3">
+  <div class="blog-portfolio-img">
+  <a href="/media/{{ data.bloging_image }}">
+  <img src="/media/{{ data.bloging_image }}" style="width: 16.75rem; height: 6.75rem;" ></a>
+  </a>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="blog-details-list-two">
+  <ul>
+  {{ data.bloging_content |safe }}
+  </ul>
+  </div>
+  <div class="article-share-area">
+  <div class="row align-items-center">
+  <div class="col-lg-9 col-sm-9">
+  <div class="article-social-icon">
+  <ul class="social-icon">
+  <li class="title">Share Post</li>
+  <li>
+  <a href="http://www.pixiejob.com/" target="_blank">
+  <i class="ri-facebook-fill"></i>
+  </a>
+  </li>
+   <li>
+  <a href="http://www.pixiejob.com/" target="_blank">
+  <i class="ri-instagram-fill"></i>
+  </a>
+  </li>
+  <li>
+  <a href="http://www.pixiejob.com/" target="_blank">
+  <i class="ri-twitter-fill"></i>
+  </a>
+  </li>
+  <li>
+  <a href="http://www.pixiejob.com/" target="_blank">
+  <i class="ri-linkedin-fill"></i>
+  </a>
+  </li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  {% if request.session.jobseeker %}
+  <div></div>
+                  {% else %}
+                  <div class="employers-cv-area">
+                      <div class="container">
+                      <div class="employers-cv-bg">
+                      <div class="row align-items-center">
+                      <div class="col-lg-8">
+                      <div class="employers-cv-content">
+                      <h2>Let Employers Find You</h2>
+                      <div class="bar"></div>
+                      <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+                      </div>
+                      </div>
+                      
+                      <div class="col-lg-4">
+                      <div class="employers-cv-btn">
+                      <form enctype="multipart/form-data" action="" method="post">
+                      {% csrf_token %}
+                      <div class="form-group">
+                           {{ form.as_p }}
+                       </div>    
+                       
+                                        
+                     <a href="/jobseeker/login">
+                      Upload Your CV
+                      </a>
+                  {% endif %}
+   
+  </form>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

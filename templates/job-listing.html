@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<br>
+
+<br>
+<br>
+<br><br>
+<br>
+<h2 align="center">Job List</h2>
+<div class="job-listing-area pt-100 pb-70">
+    <div class="container">
+    <div class="job-listing-top">
+    <div class="row align-items-center">
+    <div class="col-lg-12">
+    <div class="job-listing-form">
+    <form method='post'>
+    {% csrf_token %} 
+    <div class="row align-items-center">
+    <div class="col-lg-3 col-md-4">
+    <div class="form-group">
+    <input class="form-control" type="text" placeholder="Keywords / Job Title">
+    <i class="ri-search-line"></i>
+    </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-8">
+    <div class="form-group select-group">
+    <select class="form-select form-control" name='category' id='category'>
+    <option data-display='All Categories'>All Categories</option>
+    {% for i in categories %}
+    <option value="{{i.id}}">{{i.company_categories}}</option>
+    {% endfor %}
+    </select>
+    </div>
+    </div>
+    <div class="col-lg-3 col-md-12">
+    <button type="submit" class="submit-btn border-radius-5">
+    Find Jobs
+    </button>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-4">
+    <div class="job-listing-side-bar">
+    {% comment %} <div class="job-listing-side-bar-content">
+    <h3>Job List</h3>
+    <p>Search job as per your skills</p>
+    
+    </div> {% endcomment %}
+    <div class="job-listing-widget">
+    <ul class="accordion-widget">
+    <li class="accordion-widget-item">
+    <a class="accordion-widget-title" href="javascript:void(0)">
+    <i class="ri-arrow-down-s-line"></i>
+    Type of Employment
+    </a>
+    <ul class="accordion-widget-content show">
+    <li>
+    <input id="check-f" type="checkbox" name="FullTime">
+    <label for="check-f">Full Time Jobs <span class="fl">10</span></label>
+    </li>
+    <li>
+    <input id="check-a" type="checkbox" name="PartTime">
+    <label for="check-a">Part Time Jobs <span class="fl">34</span> </label>
+    </li>
+    <li>
+    <input id="check-c" type="checkbox" name="Internship">
+    <label for="check-c">Internship <span class="fl">56</span> </label>
+    </li>
+    
+    </ul>
+    </li>
+    </ul>
+    </div> 
+    <div >
+    <button type="submit" class="default-btn border-radius-5" >
+    {% comment %} <a href="/apply/{{ data.id }}" class="default-btn border-radius-5"> {% endcomment %}
+        Search<i class="ri-send-plane-2-line"></i>
+     {% comment %} </a> {% endcomment %}
+    </button></div>
+</form>
+  
+    </div>
+    </div>
+    <div class="col-lg-8">
+    <div class="job-listing-topper">
+    <div class="row align-items-center">
+    <div class="col-lg-6">
+    <div class="job-listing-title">
+  
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="job-listing-category">
+    <div class="row">
+    <div class="col-lg-6 col-6">
+    <div class="form-group select-group">
+
+    </div>
+    <div class="col-lg-6 col-6">
+    <div class="form-group select-group">
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    <div class="row pt-45">
+    {% for i in page_obj.object_list  %}
+    <div class="col-lg-12">
+    <div class="recent-job-card box-shadow">
+    <div class="content">
+    <div class="recent-job-img">
+    <a href="job-details.html">
+    <a href="JobDetails/{{i.id}}"><img src="{{ i.employer.image.url }}" alt="Images" style="width: 10rem; height:5rem;">
+    </a>
+    </div>
+    <h3><a href="JobDetails/{{i.id}} ">{{i.job_title|safe |slice:":50"}}</a></h3>
+    <ul class="job-list1">
+    <li><i class="ri-briefcase-line"></i> {{i.employer}}</li>
+    <li><i class="ri-time-line"></i> {{i.job_opening_date}}</li>
+    </ul>
+    <span><i class="ri-map-pin-line"></i> {{i.city}}</span>
+    </div>
+    <div class="job-sub-content">
+    <ul class="job-list2">
+    <li class="time">{{i.job_type}}</li>
+    {% comment %} <li class="freelance">Freelance</li>
+    <li class="urgent">Urgent</li> {% endcomment %}
+    </ul>
+    <div class="price">{{i.salary_max}}<b>/Per Week</b></div>
+    </div>
+    
+    </div>
+    </div>
+    {% endfor %}
+
+    
+
+<div class="col-lg-12 col-md-12 text-left">
+        <div class="pagination-area">
+        <center>
+{% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}" class="prev page-numbers"><i class="ri-arrow-left-s-line"></i></a>
+
+  {% if page_obj.number > 3 %}
+    <a href="?page=1" >1</a>
+    {% if page_obj.number > 4 %}
+      <span>...</span>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+  {% if page_obj.number == num %}
+    <a href="?page={{ num }}" class="page-numbers current" aria-current="page">{{ num }}</a>
+  {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+    <a href="?page={{ num }}">{{ num }}</a>
+  {% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+  {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+    <span>...</span>
+    <a href="?page={{ page_obj.paginator.num_pages }}" >{{ page_obj.paginator.num_pages }}</a>
+  {% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+    <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+  {% endif %}
+
+  <a href="?page={{ page_obj.next_page_number }}"class="next page-numbers"><i class="ri-arrow-right-s-line"></i></a>
+{% endif %}
+    
+</center>
+</div>
+</div>  
+        
+        </div> 
+        </div>
+   
+
+    
+    </div>
+    </div>
+    </div>
+    </div>
+
+    {% endblock %}

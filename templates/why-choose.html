@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="inner-banner">
+    <div class="container">
+     <div class="inner-title text-center">
+    <h3>Why candidate choose us</h3>
+    </div>
+    </div>
+    </div>
+    
+    {% for i in data %}
+    <div class="why-choose-area pt-100 pb-70">
+    <div class="container">
+    <div class="why-choose-content">
+    <div class="content row">
+    <h2>{{ i.title | slice:":30"}}</h2>
+    <div class="bar"></div>
+    <div class="col-lg-6 col-md-8">
+    <p>{{ i.candidate_content|safe | slice:":1960"}}</p>
+    <br>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <img src="{{ i.front_image.url }}" style="max-width: 120%; height: 100%; border-radius:8%" ></a>
+        
+    </div>
+    <ul>
+    </ul>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+    {% for i in data %}
+    <div class="why-choose-area pt-100 pb-70">
+        <div class="container">
+        <div class="why-choose-content">
+        <div class="content row">
+        <h2>{{ i.sub_title | slice:":30"}}</h2>
+        <div class="bar"></div>
+        <div class="col-lg-6 col-md-8">
+        <p>{{ i.sub_content|safe | slice:":1960"}} 
+<br>
+<br>
+<br>
+        <div class="find-jobs-btn">
+    {% if request.session.jobseeker %}
+        <a href="/LoginRegisterPopup" class="default-btn border-radius-5">
+            Apply Now<i class="ri-send-plane-2-line"></i>
+         </a>
+     {% else %}
+        <a href="/jobseeker/login" class="default-btn border-radius-5">
+            Apply Now<i class="ri-send-plane-2-line"></i>
+         </a>
+     {% endif %}
+           
+        </div>
+    </p>
+        </div>
+        <div class="col-lg-6 col-md-10">
+            <img src="{{ i.back_image.url }}" style="max-width: 88%; max-height: 88%; border-radius:8%"></a>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+   
+    <div class="employers-cv-area">
+        <div class="container">
+        <div class="employers-cv-bg">
+        <div class="row align-items-center">
+        <div class="col-lg-8">
+        <div class="employers-cv-content">
+        <h2>Let Employers Find You</h2>
+        <div class="bar"></div>
+        <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+        </div>
+        </div>
+        <div class="col-lg-4">
+        <div class="employers-cv-btn">
+            
+
+                {% if request.session.jobseeker %}
+                   <a href="/LoginRegisterPopup">
+                    Upload Your CV
+                    </a>
+                {% else %}
+                   <a href="/jobseeker/login">
+                    Upload Your CV
+                    </a>
+                {% endif %}
+
+
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+{% endblock %}

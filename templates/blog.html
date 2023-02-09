@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+
+<div class="inner-banner">
+  <div class="container">
+    <div class="inner-title text-center">
+      <h3>From Our Blogs</h3>
+      <p class="m-auto">
+        We collect reviews from our users so you can get an honest opinion of
+        what an experience with our website are really like!
+      </p>
+    </div>
+  </div>
+</div>
+
+{% comment %} <div class="blog-area pt-100 pb-70">
+  <div class="container">
+    <div class="section-title text-center">
+      {% comment %} <div class="bar m-auto"></div> {% endcomment %}
+      {% comment %} <p class="m-auto">
+        We collect reviews from our users so you can get an honest opinion of
+        what an experience with our website are really like!
+      </p>
+    </div>
+    </div>
+  </div>
+</div> {% endcomment %} 
+
+<div class="row">
+  {% for i in data  %}
+  <div class="col-lg-4 col-md-6">
+    
+  <div class="blog-card">
+  <div class="blog-img" style="text-align:center;">
+  <a href="blog_details/{{i.id}}"><img src="{{ i.bloging_image.url }}" alt="Blog Images" style="max-width: 80%; border-radius:5%;  margin-bottom:-5%;">
+    <div  style="padding-left:16%; margin-bottom:-5%; ">
+      <a href="blog_details/{{i.id}}"  class="default-btn" target="_blank" style="border-radius: 25px; width:35%;">
+        {{ i.bloging_title|slice:":10" }}
+      </a>
+    </div>
+  </a>
+  </div>
+
+  <div class="content" style="padding-left:12%; ;">
+  <ul>
+  <li>
+  <i class="ri-time-line"  style="text-align:center;"></i>{{ i.created_date }}
+  </li>
+  <li>
+  <i class="ri-mail-line"></i> 02 Comments
+  </li>
+  </ul>
+  <h3 style="padding-right:12%; margin-top:-4%;"><a href="blog_details/{{i.id}}">{{ i.bloging_content |safe | slice:":64"}}</a></h3>
+  
+  </div>
+  </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+<div class="col-lg-12 col-md-12 text-left">
+  <div class="pagination-area">
+  <center>
+{% if page_obj.has_previous %}
+<a href="?page={{ page_obj.previous_page_number }}" class="prev page-numbers"><i class="ri-arrow-left-s-line"></i></a>
+
+{% if page_obj.number > 3 %}
+<a href="?page=1" >1</a>
+{% if page_obj.number > 4 %}
+<span>...</span>
+{% endif %}
+{% endif %}
+{% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+<a href="?page={{ num }}" class="page-numbers current" aria-current="page">{{ num }}</a>
+{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a href="?page={{ num }}">{{ num }}</a>
+{% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+{% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
+<span>...</span>
+<a href="?page={{ page_obj.paginator.num_pages }}" >{{ page_obj.paginator.num_pages }}</a>
+{% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+<a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+{% endif %}
+
+<a href="?page={{ page_obj.next_page_number }}"class="next page-numbers"><i class="ri-arrow-right-s-line"></i></a>
+{% endif %}
+
+</center>
+</div>
+</div>  
+
+{% if request.session.jobseeker %}
+<div></div>
+                {% else %}
+                <div class="employers-cv-area">
+                    <div class="container">
+                    <div class="employers-cv-bg">
+                    <div class="row align-items-center">
+                    <div class="col-lg-8">
+                    <div class="employers-cv-content">
+                    <h2>Let Employers Find You</h2>
+                    <div class="bar"></div>
+                    <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                    <div class="employers-cv-btn">
+                    <form enctype="multipart/form-data" action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                         {{ form.as_p }}
+                     </div>    
+                     
+                                      
+                   <a href="/jobseeker/login">
+                    Upload Your CV
+                    </a>
+                {% endif %}
+ 
+</form>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

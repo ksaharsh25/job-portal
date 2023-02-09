@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+{% comment %} <div class="inner-banner">
+<div class="container">
+ <div class="inner-title text-center">
+
+<h3>{{data.job_title}}</h3>
+<h5>Company: {{data.employer}}</h5>
+</div>
+</div>
+</div> {% endcomment %}
+
+<div class="job-details-area pt-100 pb-70">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="find-jobs-card d-flex align-items-center box-shadow">
+<div class="find-jobs-img">
+<img src="{{ data.employer.image.url }}" style="width: 17rem; height: 8.75rem;" ></a>
+</a>
+</div>
+<div class="content">
+    
+<ul class="content-list">
+<li class="time">{{data.job_type}}</li>
+</ul>
+<h4>{{data.job_title}}</h4>
+<h6><a href="/employer/{{ data.employer.id }}" style="color:inherit;">Category: {{data.job_catagories}}</a></h6>
+<ul class="content-list2">
+<li class="list-two"><i class="ri-time-line"></i> {{data.job_opening_date}}</li>
+</ul>
+<ul class="content-list3">
+<li><i class="ri-briefcase-line"></i> <a href="/employer/{{ data.employer.id }}" style= 'color:black'> Company : <b>{{data.employer}}</b></a></li>
+<li><i class="ri-map-pin-line"></i> Location : <b>{{data.city}}</b></li>
+<li><i class="ri-currency-line"></i>Salary : <b>{{data.salary_min}}-{{data.salary_max}}</b></li>
+</ul>
+</div>
+<div class="find-jobs-btn"  style='position: static; float: right;' >
+    {% if request.session.jobseeker %}
+        {% if applied.value %}
+                <a href="#" class="default-btn border-radius-5">
+                    Already Applied
+                </a>
+        {% else %}
+                <a href="/apply/{{ data.id }}" class="default-btn border-radius-5">
+                    Apply Now<i class="ri-send-plane-2-line"></i>
+                 </a>
+        {% endif %}
+    {% else %}
+                <a href="/jobseeker/login" class="default-btn border-radius-5">
+                    Apply Now<i class="ri-send-plane-2-line"></i>
+                 </a>
+             {% endif %}
+
+            
+</div>
+
+</div>
+</div>
+
+
+<div class="col-lg-4">
+<div class="job-details-widget-side pr-20">
+<div class="job-details-widget">
+<h3 class="title">Job Overview</h3>
+
+<ul class="job-details-category">
+<li>Published by: <span>{{data.staff_name |slice:":15"}}</span></li>
+<li>Vacancy: <span>{{data.Number_vacancy}}</span></li>
+<li>Job Type: <span>{{data.job_type}}</span></li>
+<li>Experience: <span>{{data.experience}}</span></li>
+{% comment %} <li>Job Location: <span>{{data.city}}</span></li> {% endcomment %}
+
+<li>Application Due: <span>{{data.job_end_date}}</span></li>
+</ul>
+<br>
+<br>
+<div class="default-btn border-radius-5" >
+    <a href="/" target="_blank" style='color:white;'>www.pixiejob.com</a>
+    </div>
+</div>
+<div class="job-details-widget">
+{% comment %} <h3 class="title">Company Overview</h3>
+
+<ul class="job-details-category">
+<li>Categories: <span>{{data.job_catagories}}</span></li>
+
+<li>Employees: <span>{{data.employer}}</span></li>
+<li>Location: <span>{{data.city}}</span></li>
+
+</ul> {% endcomment %}
+{% comment %} <div class="job-details-social">
+<span>Socials:</span>
+<ul class="social-icon">
+<li>
+<a href="{{data.Facebook}}" target="_blank">
+<i class="ri-facebook-fill"></i>
+</a>
+ </li>
+<li>
+<a href="{{data.Instagram}}" target="_blank">
+<i class="ri-instagram-fill"></i>
+</a>
+</li>
+<li>
+<a href="{{data.Twitter}}" target="_blank">
+<i class="ri-twitter-fill"></i>
+</a>
+</li>
+<li>
+<a href="{{data.Linkedin}}" target="_blank">
+<i class="ri-linkedin-fill"></i>
+</a>
+</li>
+</ul>
+</div> {% endcomment %}
+
+</div>
+</div>
+</div>
+<div class="col-lg-8">
+<div class="job-details-content">
+<div class="content mb-30">
+<h3>Job Description</h3>
+
+<h3></h3>
+<p>{{data.description|safe |slice:":800"}}</p>
+</div>
+<div class="job-details-list">
+<h3>Key Responsibilities</h3>
+
+<ul>
+{{data.key_responsibilities|safe |slice:":800"}}
+</ul>
+</div>
+<div class="job-details-list">
+<h3>Skill & Experience</h3>
+
+<ul>
+{{data.skill_experience |safe |slice:":800"}}
+</ul>
+</div>
+<div class="job-details-list">
+    <h3>About Company</h3>
+    
+    <ul>
+    {{data.about_company |safe |slice:":800"}}
+    </ul>
+    </div>
+</div><br>
+<div class="find-jobs-btn"   >
+    {% if request.session.jobseeker %}
+        {% if applied.value %}
+                <a href="#" class="default-btn border-radius-5">
+                    Already Applied
+                </a>
+        {% else %}
+                <a href="/apply/{{ data.id }}" class="default-btn border-radius-5">
+                    Apply Now<i class="ri-send-plane-2-line"></i>
+                 </a>
+        {% endif %}
+    {% else %}
+                <a href="/jobseeker/login" class="default-btn border-radius-5">
+                    Apply Now<i class="ri-send-plane-2-line"></i>
+                 </a>
+             {% endif %}
+
+            
+</div>
+
+<div class="job-details-portfolio">
+<h3>Our Gallery</h3>
+
+<div class="row gallery-photo">
+<div class="col-lg-3 col-6 col-md-3">
+<div class="job-details-portfolio-img">
+<a href="assets/images/blog/blog-details-img2.jpg">
+<img src="{{ data.employer.image.url }}" style="width: 20.5rem; height: 7rem;" ></a>
+</a>
+</div>
+</div>
+<div class="col-lg-3 col-6 col-md-3">
+<div class="job-details-portfolio-img">
+<a href="assets/images/blog/blog-details-img3.jpg">
+<img src="{{ data.employer.image.url }}" style="width: 20.5rem; height: 7rem;" ></a>
+</a>
+</div>
+</div>
+<div class="col-lg-3 col-6 col-md-3">
+<div class="job-details-portfolio-img">
+<a href="assets/images/blog/blog-details-img4.jpg">
+<img src="{{ data.employer.image.url }}" style="width: 20.5rem; height: 7rem;" ></a>
+</a>
+</div>
+</div>
+<div class="col-lg-3 col-6 col-md-3">
+<div class="job-details-portfolio-img">
+<a href="assets/images/blog/blog-details-img5.jpg">
+<img src="{{ data.employer.image.url }}" style="width: 20.5rem; height: 7rem;" ></a>
+ </a>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> 
+
+
+{% if request.session.jobseeker %}
+<div></div>
+                {% else %}
+                <div class="employers-cv-area">
+                    <div class="container">
+                    <div class="employers-cv-bg">
+                    <div class="row align-items-center">
+                    <div class="col-lg-8">
+                    <div class="employers-cv-content">
+                    <h2>Let Employers Find You</h2>
+                    
+                    <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                    <div class="employers-cv-btn">
+                    <form enctype="multipart/form-data" action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                         {{ form.as_p }}
+                     </div>    
+                     
+                                      
+                   <a href="/jobseeker/login">
+                    Upload Your CV
+                    </a>
+                {% endif %}
+ 
+</form>
+</div>  
+            </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

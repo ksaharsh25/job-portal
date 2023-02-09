@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="inner-banner">
+    <div class="container">
+     <div class="inner-title text-center">
+    <h3>{{data.employer}}</h3>
+    </div>
+    </div>
+    </div>
+        
+        <div class="job-details-area pt-20 pb-10">
+        <div class="container">
+        <div class="row">
+
+            
+ <div class="employers-details-area pt-100 pb-70 col-lg-12">
+<div class="container">
+<div class="col-lg-12">
+<div class="job-post row">
+<div class="col-lg-4">
+<div class="job-details-widget-side pr-20">
+<div class="job-details-widget">
+<h3 class="title">Company Overview</h3>
+<img src="/media/{{ data.image }}" alt="Images" style="width: 4rem; height:4rem;">
+<br>
+<br>
+
+
+<ul class="job-details-category">
+<li>Categories: 
+<span>{{data.industry}}</span></li>
+<li>Established: 
+<span>{{data.established_date}}</span></li>
+<li>Employees: 
+<span>{{data.number_of_employee}}</span></li>
+<li>Location: <span> {{data.city}}</span></li>
+</ul>
+{% comment %} <div class="job-details-social">
+<span>Socials:</span>
+<ul class="social-icon">
+<li>
+<a href="{{data.Facebook}}" target="_blank">
+<i class="ri-facebook-fill"></i>
+</a>
+</li>
+<li>
+<a href="{{data.Instagram}}" target="_blank">
+<i class="ri-instagram-fill"></i>
+</a>
+</li>
+<li>
+<a href="{{data.Twitter}}" target="_blank">
+<i class="ri-twitter-fill"></i>
+</a>
+</li>
+<li>
+<a href="{{data.Linkedin}}" target="_blank">
+<i class="ri-linkedin-fill"></i>
+</a>
+</li>
+</ul>
+</div> {% endcomment %}
+<div class="job-details-web-btn">
+<a href="http://www.pixiejob.com/" target="_blank">www.pixiejob.com</a>
+</div>
+</div>
+</div> 
+
+</div>
+<div class="col-lg-8">
+    <div class="employers-details-content">
+    <div class="">
+    <h3>About Company</h3>
+    
+    <p>{{data.about_company |safe}}</p>
+    </div>
+    <div class="employers-details-list">
+    </div>
+ </div>
+
+   
+
+</div>
+</div>
+</div>
+</div> 
+
+<div class="employers-details-portfolio">
+<h3>Our Gallery</h3>
+<br>
+<br>
+
+
+<div class="row gallery-photo">
+<div class="col-lg-3 col-6 col-md-3">
+<div class="employers-details-portfolio-img">
+<img src="/media/{{ data.image }}" style="width: 12.75rem; height: 8.75rem;" ></a>
+</a>
+</div>
+</div>
+<div class="col-lg-3 col-6 col-md-3">
+ <div class="employers-details-portfolio-img">
+<img src="/media/{{ data.image }}" style="width: 12.75rem; height: 8.75rem;" ></a>
+</a>
+</div>
+</div>
+<div class="col-lg-3 col-6 col-md-3">
+<div class="employers-details-portfolio-img">
+<img src="/media/{{ data.image }}" style="width: 12.75rem; height: 8.75rem;" ></a>
+</a>
+</div>
+</div>
+<div class="col-lg-3 col-6 col-md-3">
+<div class="employers-details-portfolio-img">
+<img src="/media/{{ data.image }}" style="width: 12.75rem; height: 8.75rem;" ></a>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% if request.session.jobseeker %}
+<div></div>
+                {% else %}
+                <div class="employers-cv-area">
+                    <div class="container">
+                    <div class="employers-cv-bg">
+                    <div class="row align-items-center">
+                    <div class="col-lg-8">
+                    <div class="employers-cv-content">
+                    <h2>Let Employers Find You</h2>
+                    <div class="bar"></div>
+                    <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                    <div class="employers-cv-btn">
+                    <form enctype="multipart/form-data" action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                         {{ form.as_p }}
+                     </div>    
+                     
+                                      
+                   <a href="/jobseeker/login">
+                    Upload Your CV
+                    </a>
+                {% endif %}
+ 
+</form>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="inner-banner">
+<div class="container">
+ <div class="inner-title text-center">
+<h3>Contact Us</h3>
+{% comment %} <ul>
+<li>
+<a href="index.html">Home</a>
+</li>
+<li>Contact Us</li>
+</ul> {% endcomment %}
+</div>
+</div>
+</div>
+
+
+<div class="contact-info-area pt-100 pb-70">
+<div class="container">
+<div class="section-title text-center">
+{% comment %} <h2>Contact Info</h2> {% endcomment %}
+<div class="bar m-auto"></div>
+<p class="m-auto">We collect reviews from our users so you can get an honest opinion of what an experience with our website are really like!</p>
+</div>
+<div class="row pt-45">
+<div class="col-lg-3 col-6">
+<div class="contact-info-item">
+<i class="ri-map-pin-5-line contact-info-bg"></i>
+<h3>Address</h3>
+<p><a href="https://g.page/pixie-hospitality-services?share">
+    208, Crystal Plaza, Palash Towers C Wing, opposite to infinity mall, Veera Desai Industrial Estate, Andheri West, Mumbai, Maharashtra 400053
+</a></p>
+</div>
+</div>
+<div class="col-lg-3 col-6">
+<div class="contact-info-item">
+<i class="ri-phone-line contact-info-bg2"></i>
+<h3>Call Us</h3>
+<p><a href="tel:+9174708 16781">
+    +91 7470816781
+    </a></p>    
+</div>
+</div>
+<div class="col-lg-3 col-6">
+<div class="contact-info-item">
+<i class="ri-question-answer-line contact-info-bg3"></i>
+<h3>Email</h3>
+<p>
+    <span class="cf_email" data-cfemail="e3909693938c9197a3998c81868dcd808c8e">hr@pixiejob.com</span>
+    </p>
+</div>
+</div>
+{% comment %} <div class="col-lg-3 col-6">
+<div class="contact-info-item">
+<i class="ri-printer-line contact-info-bg4"></i>
+<h3>Fax Number</h3>
+<p>(07)33196076</p>
+</div>
+</div> {% endcomment %}
+</div>
+</div>
+</div>
+
+
+<div class="map-area">
+<div class="container-fluid m-0 p-0">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1884.628704455339!2d72.83055614680052!3d19.140206511307696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b765fecdf5af%3A0x80af09191339c26e!2spixieJob!5e0!3m2!1sen!2sin!4v1658219957290!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+</div>
+</div>
+
+
+<div class="contact-area pt-100 pb-70">
+<div class="container">
+<div class="contact-form">
+<h3>Leave A Message</h3>
+<form method="post">
+    {% csrf_token %}
+<div class="row">
+<div class="col-lg-6">
+<div class="form-group">
+<label>Your Name</label>
+<input type="text" name="Your_Name" id="name" class="form-control" required data-error="Please Enter Your Name">
+<div class="help-block with-errors"></div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group">
+<label>Your Email</label>
+<input type="email" name="Your_Email" id="email" class="form-control" required data-error="Please Enter Your Email">
+<div class="help-block with-errors"></div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group">
+<label>Phone Number</label>
+<input type="text" name="Phone_Number" id="phone_number" required data-error="Please Enter Your number" class="form-control">
+<div class="help-block with-errors"></div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group">
+<label>Your Subject</label>
+<input type="text" name="Your_Subject" id="msg_subject" class="form-control" required data-error="Please Enter Your Subject">
+<div class="help-block with-errors"></div>
+</div>
+</div>
+<div class="col-lg-12 col-md-12">
+<div class="form-group">
+<label>Your Message</label>
+<textarea name="Your_Message" class="form-control" id="message" cols="30" rows="5" required data-error="Write your message"></textarea>
+<div class="help-block with-errors"></div>
+</div>
+</div>
+
+<div class="col-lg-12 col-md-12">
+    <button type="submit" class="default-btn border-radius-5"  data-bs-toggle="modal" data-bs-target="#myModal">
+    Send Message <i class="ri-chat-4-line"></i>
+    
+    </button>
+
+</div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+
+
+  {% if request.session.jobseeker %}
+  <div></div>
+                  {% else %}
+                  <div class="employers-cv-area">
+                      <div class="container">
+                      <div class="employers-cv-bg">
+                      <div class="row align-items-center">
+                      <div class="col-lg-8">
+                      <div class="employers-cv-content">
+                      <h2>Let Employers Find You</h2>
+                      <div class="bar"></div>
+                      <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+                      </div>
+                      </div>
+                      
+                      <div class="col-lg-4">
+                      <div class="employers-cv-btn">
+                      <form enctype="multipart/form-data" action="" method="post">
+                      {% csrf_token %}
+                      <div class="form-group">
+                          {{ form.as_p }}
+                      </div>    
+                      
+                                        
+                    <a href="/jobseeker/login">
+                      Upload Your CV
+                      </a>
+                  {% endif %}
+  
+  </form>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Thanks you for submission</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+           Our representative will contact you soon.
+
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

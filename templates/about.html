@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="inner-banner">
+<div class="container">
+<div class="inner-title text-center">
+<h3>About Us</h3>
+</div>
+</div>
+</div>
+
+
+<div class="about-area pt-100 pb-70">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-6">
+<div class="about-img">
+<div class="row">
+<div class="col-6">
+<img src="static/assets/images/about-img1.jpg" alt="Images">
+</div>
+<div class="col-6">
+<img src="static/assets/images/about-img2.jpg" alt="Images">
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="about-content pl-20">
+<div class="section-title">
+
+<h2>About PixieJob </h2>
+<div class="bar"></div>
+
+<p>{{data.about_us_title_head}} </p>
+<p>{{data.about_us_content |safe  }}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="services-area pt-100 pb-70">
+<div class="container">
+<div class="section-title text-center">
+<h2>Our Services</h2>
+<div class="bar m-auto"></div>
+<p class="m-auto">Every single one of our jobs has some kind of flexibility option.</p>
+</div>
+<div class="row pt-45 justify-content-center">
+<div class="col-lg-4 col-6">
+<div class="services-card">
+<i class="ri-flashlight-line services-bg1"></i>
+<h3><a href="PostJob">Advertise A Job</a></h3>
+<p>Single one of our jobs has some kind of flexibility option.</p>
+</div>
+</div>
+<div class="col-lg-4 col-6">
+<div class="services-card">
+<i class="ri-file-cloud-line services-bg2"></i>
+<h3><a href="Candidates_Listing">CV Search</a></h3>
+<p>Single one of our jobs has some kind of flexibility option.</p>
+</div>
+</div>
+<div class="col-lg-4 col-6">
+<div class="services-card">
+<i class="ri-briefcase-2-line services-bg3"></i>
+<h3><a href="JobListing">Display Job</a></h3>
+<p>Single one of our jobs has some kind of flexibility option.</p>
+</div>
+ </div>
+</div>
+</div>
+</div>
+
+
+<div class="counter-area pt-100 pb-70">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-4 col-6 col-md-4">
+<div class="counter-card">
+<h3><span class="odometer" data-count="14">00</span>K</h3>
+<div class="bar m-auto"></div>
+<p>Over 14k open job positions</p>
+</div>
+</div>
+<div class="col-lg-4 col-6 col-md-4">
+<div class="counter-card">
+<h3><span class="odometer" data-count="1,87,113">000000</span></h3>
+<div class="bar m-auto"></div>
+<p>1,87,113 Total job posted</p>
+</div>
+</div>
+<div class="col-lg-4 col-6 col-md-4">
+<div class="counter-card">
+<h3><span class="odometer" data-count="5">0</span>M</h3>
+<div class="bar m-auto"></div>
+<p>5 million daily active users</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="career-area pb-70">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-6">
+<div class="career-img">
+<div class="row align-items-center">
+<div class="col-6">
+<div class="row">
+<div class="col-12">
+<div class="images1">
+<img src="static/assets/images/career/career-img1.jpg" alt="Images">
+</div>
+</div>
+<div class="col-12">
+<div class="images3">
+<img src="static/assets/images/career/career-img2.jpg" alt="Images">
+</div>
+</div>
+</div>
+</div>
+<div class="col-6">
+<div class="row">
+<div class="col-12">
+<div class="images2">
+<img src="static/assets/images/career/career-img3.jpg" alt="Images">
+</div>
+</div>
+<div class="col-12">
+<div class="images4">
+<img src="static/assets/images/career/career-img4.jpg" alt="Images">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="career-content pl-20">
+<div class="section-title">
+<h2>Hospitality<b> Career Tips </b> Help You to Get the Best Job That Fits You</h2>
+<div class="bar"></div>
+
+</div>
+<div class="content">
+<br>   
+<img src="/media/{{data.manager_image_head}}" alt="Images" style="width: 5rem; height:6rem;">
+<h3>{{data.manager_title_head}}</h3>
+<p>{{data.about_us_content|safe }}</p>
+</div>
+
+<ul>
+<li><img src="static/assets/images/user-img/user-img1.jpg" alt="Images"></li>
+<li><img src="static/assets/images/user-img/user-img2.jpg" alt="Images"></li>
+<li><img src="static/assets/images/user-img/user-img3.jpg" alt="Images"></li>
+<li><img src="static/assets/images/user-img/user-img4.jpg" alt="Images"></li>
+<li><img src="static/assets/images/user-img/user-img5.jpg" alt="Images"></li>
+<li class="title">2000+ Freelancers Get Result </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="testimonials-widget-area ptb-100">
+    <div class="container">
+        <div class="testimonials-widget-slider owl-carousel owl-theme">
+            {% for v in data2  %}
+            <div class="testimonials-widget-item">
+                <h3>{{ v.testimonial_title }} </h3>
+                <div class="content-img">
+                    <img src="{{v.client_image.url}}" alt="Images" style="max-width: 7.75rem; max-height: 5.75rem;">
+                </div>
+                <p>{{ v.client_content |safe }}</p>
+            </div>
+            {% endfor %} 
+        </div> 
+    </div>
+</div>
+
+
+{% if request.session.jobseeker %}
+<div></div>
+                {% else %}
+                <div class="employers-cv-area">
+                    <div class="container">
+                    <div class="employers-cv-bg">
+                    <div class="row align-items-center">
+                    <div class="col-lg-8">
+                    <div class="employers-cv-content">
+                    <h2>Let Employers Find You</h2>
+                    <div class="bar"></div>
+                    <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+                    </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                    <div class="employers-cv-btn">
+                    <form enctype="multipart/form-data" action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                         {{ form.as_p }}
+                     </div>    
+                     
+                                      
+                   <a href="/jobseeker/login">
+                    Upload Your CV
+                    </a>
+                {% endif %}
+ 
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>{% endblock %}

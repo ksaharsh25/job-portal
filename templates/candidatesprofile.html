@@ -1,0 +1,188 @@
+{% extends "base3.html" %}
+
+
+{% block content %}
+{% load static %}
+
+  
+    <div class="main-dashboard-content d-flex flex-column">
+    
+    
+    
+
+<div class="sidemenu-area" style='z-index: 10'>
+    <div class="sidemenu-header" >
+    
+    {% comment %} <a class="navbar-brand" href="index.html">
+        <img src="{% static 'assets/images/logo.png' %}" class="logo-one" alt="Logo">
+        <img src="{% static 'assets/images/logo.png' %}" class="logo-two" alt="Logo">
+        </a>  {% endcomment %}
+    <div class="responsive-burger-menu d-block d-lg-none">
+    <span class="top-bar"></span>
+    <span class="middle-bar"></span>
+    <span class="bottom-bar"></span>
+    </div>
+    </div>
+<div class="sidemenu-body">
+    <ul class="sidemenu-nav metisMenu h-70" id="sidemenu-nav" data-simplebar>
+    
+    <li class="nav-item">
+        <a href="Dashboard_My_Profile" class="nav-link">
+        <span class="icon"><i class="ri-user-3-line"></i></span>
+        <span class="menu-title">My Profile</span>
+        </a>
+        </li>    
+    <li class="nav-item">
+    <a href="LoginRegisterPopup" class="nav-link">
+    <span class="icon"><i class="ri-file-list-line"></i></span>
+    <span class="menu-title">My Resume</span>
+    </a>
+    </li>
+   <li class="nav-item">
+        <a href="/applied/{{ data.job_seeker_id }}" class="nav-link">
+        <span class="icon"><i class="ri-briefcase-line"></i></span>
+        <span class="menu-title">Applied Jobs</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="/jobseeker/logout" class="nav-link">
+        <span class="icon"><i class="ri-logout-circle-r-line"></i></span>
+        <span class="menu-title">Log out</span>
+        </a>
+        </li>
+    
+    </div>
+    </div>
+
+<div style="padding:1%">
+<div class="breadcrumb-area">
+<h1>My Profile</h1>
+<div class="col-lg-3 col-6 col-md-3">
+    <div class="employers-details-portfolio-img">
+   <img src="{{ request.session.jobseeker_image }}" style="width: 16.75rem; height: 8.75rem;" ></a>
+   </a>
+   </div>
+   </div>
+</div>
+</div>
+
+
+<div class="submit-resumes-box">
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %} 
+<div class="row">
+<h3>Basic Info</h3>
+
+<div class="col-lg-6 col-md-12">
+<div class="form-group">
+<label>Your Name</label>
+<h5> {{data.full_name}}</h5>
+</div>
+</div>
+
+<div class="col-lg-6 col-md-12">
+<div class="form-group">
+<label>Your Email</label>
+<h5> {{data.email_id}}</h5>
+</div>
+</div>
+<div class="col-lg-6 col-md-12">
+<div class="form-group">
+<label>Date of Birth</label>
+<h5> {{data.date_birth}}</h5>
+</div>
+</div>
+<div class="col-lg-6 col-md-12">
+<div class="form-group">
+<label>Your Phone</label>
+<h5> {{data.mobile_number}}</h5>
+</div>
+</div>
+
+
+<div class="col-lg-6 col-md-12">
+<div class="form-group">
+<label>Address</label>
+<h5> {{data.address}}</h5>
+</div>
+</div>
+<div class="col-lg-6 col-md-12">
+<div class="form-group">
+<label>Gender</label>
+<h5> {{data.gender}}</h5>
+
+</div>
+</div>
+
+<div class="col-lg-12 col-md-12">
+<div class="form-group">
+<label>Description</label>
+<h5> {{data.about_me}}</h5>
+</div>
+</div>
+{% comment %} <h3>Education</h3> {% endcomment %}
+<div class="col-xl-6 col-lg-12 col-md-12">
+<div class="form-group">
+<label>Education</label>
+
+<h5> {{data.education}}</h5>
+
+</div>
+</div>
+
+<div class="col-xl-6 col-lg-12 col-md-12">
+<div class="form-group">
+<label>Experience</label>
+<h5> {{data.working_experience}}</h5>
+
+</div>
+</div>
+
+
+
+<div class="col-xl-6 col-lg-6 col-md-6">Resumes upload</div>
+
+<br>
+<br>
+<br><br>
+<br>
+
+{% comment %} <div class="col-lg-12 col-md-12">
+<button type="submit" class="default-btn border-radius-5"  data-bs-toggle="modal" data-bs-target="#myModal">Submit Resumes <i class="flaticon-send"></i></button>
+
+</div> {% endcomment %}
+</div>
+</form>
+</div>
+</div>
+
+
+ <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Thanks you</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                Thanks you for submission Our representative will contact you soon.
+
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+
+
+ 
+{% endblock %}

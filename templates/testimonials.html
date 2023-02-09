@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="inner-banner">
+<div class="container">
+ <div class="inner-title text-center">
+<h3>Testimonials</h3>
+<ul>
+<li>
+<a href="index.html">Home</a>
+</li>
+<li>Testimonials</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="testimonials-area pt-100 pb-100">
+<div class="container">
+<div class="section-title text-center">
+<h2>Reviews From Our Users</h2>
+<div class="bar m-auto"></div>
+<p class="m-auto">We collect reviews from our users so you can get an honest opinion of what an experience with our website are really like!</p>
+</div>
+<div class="testimonials-slider owl-carousel owl-theme pt-45">
+<div class="testimonials-item">
+<div class="content">
+<div class="content-img">
+<img src="assets/images/testimonials/testimonials-img1.jpg" alt="Images">
+<div class="line1"></div>
+<div class="line2"></div>
+</div>
+<h3>Thomas Albedin</h3>
+<span>IT Manager</span>
+</div>
+<P>We collect reviews from our users so you can get an honest opinion of what an experience with our webebsite are really like. We collect reviews from our users so you can get an honest opinion of what an here lorem experience with.</P>
+<div class="rating">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<div class="testimonials-item">
+<div class="content">
+<div class="content-img">
+<img src="assets/images/testimonials/testimonials-img2.jpg" alt="Images">
+<div class="line1"></div>
+<div class="line2"></div>
+</div>
+<h3>Camelia Rose</h3>
+<span>Digital Marketer</span>
+</div>
+<P>We collect reviews from our users so you can get an honest opinion of what an experience with our webebsite are really like. We collect reviews from our users so you can get an honest opinion of what an here lorem experience with.</P>
+<div class="rating">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<div class="testimonials-item">
+<div class="content">
+<div class="content-img">
+<img src="assets/images/testimonials/testimonials-img3.jpg" alt="Images">
+<div class="line1"></div>
+<div class="line2"></div>
+</div>
+<h3>John Carter</h3>
+<span>Ui/Ux Designer</span>
+</div>
+<P>We collect reviews from our users so you can get an honest opinion of what an experience with our webebsite are really like. We collect reviews from our users so you can get an honest opinion of what an here lorem experience with.</P>
+<div class="rating">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="counter-area pb-70">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-lg-4 col-6 col-md-4">
+<div class="counter-card">
+<h3><span class="odometer" data-count="14">00</span>K</h3>
+<div class="bar m-auto"></div>
+<p>Over 14k open job positions</p>
+</div>
+</div>
+<div class="col-lg-4 col-6 col-md-4">
+<div class="counter-card">
+<h3><span class="odometer" data-count="1,87,113">000000</span></h3>
+<div class="bar m-auto"></div>
+<p>1,87,113 Total job posted</p>
+</div>
+</div>
+<div class="col-lg-4 col-6 col-md-4">
+<div class="counter-card">
+<h3><span class="odometer" data-count="5">0</span>M</h3>
+<div class="bar m-auto"></div>
+<p>5 million daily active users</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="employers-cv-area">
+<div class="container">
+<div class="employers-cv-bg">
+<div class="row align-items-center">
+<div class="col-lg-8">
+<div class="employers-cv-content">
+<h2>Let Employers Find You</h2>
+<div class="bar"></div>
+<p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="employers-cv-btn">
+    {% if request.session.jobseeker %}
+    <a href="/LoginRegisterPopup">
+     Upload Your CV
+     </a>
+ {% else %}
+    <a href="/jobseeker/login">
+     Upload Your CV
+     </a>
+ {% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</html>{% endblock %}

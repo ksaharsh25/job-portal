@@ -1,0 +1,224 @@
+{% load static %}
+{% block footer %}
+<footer class="footer-area">
+<div class="container">
+<div class="footer-top pt-100 pb-70">
+<div class="row">
+<div class="col-lg-4 col-sm-7 col-md-7">
+<div class="footer-widget">
+<div class="footer-logo">
+<a href="/">
+<img src="{% static 'assets/images/logo.png' %}" class="footer-logo1" alt="Footer Logo" style= 'max-width:60%;'>
+<img src="{% static 'assets/images/logo-2.png' %}" class="footer-logo2" alt="Footer Logo">
+</a>
+</div>
+<ul class="footer-contact-list">
+<li>
+<i class="ri-map-pin-line"></i>
+<div class="content">
+<a href="https://g.page/pixie-hospitality-services?share">
+    208, Crystal Plaza, Palash Towers C Wing, opposite to infinity mall, Veera Desai Industrial Estate, Andheri West, Mumbai, Maharashtra 400053
+</a>
+</div>
+</li>
+<li>
+<i class="ri-mail-line"></i>
+<div class="content">
+{% comment %} <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#620b0c040d22180d00070c4c010d0f"> {% endcomment %}
+<span class="_cf_email_">hr@pixiejob.com</span>
+</a>
+</div>
+</li>
+<li>
+<i class="ri-phone-line"></i>
+<div class="content">
+<a href="tel:+9174708 16781">
++91 7470816781
+</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<br>
+<div class="col-lg-2 col-sm-6 col-md-6">
+    <br>
+    <br>
+    
+<div class="footer-widget">
+<h3>For Employer</h3>
+<ul class="footer-list">
+
+<li>
+</a>
+
+</a>
+</li>
+<li>
+<a href="/JobListing">
+Jobs Featured
+</a>
+</li>
+{% if request.session.jobseeker %}
+                   {% comment %} <a href="/LoginRegisterPopup">
+                    Upload Your CV
+                    </a> {% endcomment %}
+                {% else %}
+                <li>
+                    <a href="/PostJob">
+                    Post A Job
+                    </a>
+                    </li>
+                {% endif %}
+
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-sm-6 col-md-4">
+    <br>
+    <br>
+<div class="footer-widget ps-5">
+<h3>For Candidates</h3>
+<ul class="footer-list">
+<li>
+
+</a>
+</li>
+<li>
+
+{% if request.session.jobseeker %}
+   <a href="/LoginRegisterPopup">
+    Submit Resume
+    </a>
+{% else %}
+   <a href="/jobseeker/login">
+    Submit Resume
+    </a>
+{% endif %}
+</li>
+<li>
+
+</a>
+</li>
+<li>
+
+
+</ul>
+</div>
+</div>
+<div class="col-lg-2 col-sm-6 col-md-4" style='float:right'>
+    <br>
+    <br>
+<div class="footer-widget">
+<h3>Company</h3>
+<ul class="footer-list">
+<li>
+<a href="/aboutUs" >
+About Us
+</a>
+</li>
+<li>
+<a href="/contact" >
+Contact Us
+</a>
+</li>
+<li>
+<a href="/TermsCondition" >
+Terms & Conditions
+</a>
+</li>
+<li>
+<a href="/PrivacyPolicy">
+Privacy Policy
+</a>
+</li>
+<li>
+
+</li>
+</ul>
+</div>
+</div>
+ </div>
+</div>
+</div>
+<div class="copyright-area">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-6 col-md-7">
+<div class="copy-right-text">
+<p>
+© </script><script>document.write(new Date().getFullYear())</script> The Pixie Services. All Rights Reserved by
+<a href="http://www.pixiejob.com" >The pixie Services</a>
+</p>
+</div>
+</div>
+<div class="col-lg-6 col-md-5">
+<div class="copy-right-social-link">
+<ul class="social-link">
+<li>
+<a href="https://www.facebook.com/">
+<i class="ri-facebook-fill"></i>
+</a>
+</li>
+<li>
+<a href="https://www.instagram.com/">
+<i class="ri-instagram-fill"></i>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/">
+<i class="ri-twitter-fill"></i>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/">
+<i class="ri-linkedin-fill"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+ 
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+
+<script src="{% static 'assets/js/odometer.min.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.appear.min.js' %}"></script>
+
+<script src="{% static 'assets/js/meanmenu.min.js' %}"></script>
+
+<script src="{% static 'assets/js/metismenu.min.js' %}"></script>
+
+<script src="{% static 'assets/js/simplebar.min.js' %}"></script>
+
+<script src="{% static 'assets/js/dropzone.min.js' %}"></script>
+
+<script src="{% static 'assets/js/sticky-sidebar.min.js' %}"></script>
+
+<script src="{% static 'assets/js/tweenMax.min.js' %}"></script>
+
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'assets/js/animate.min.html' %}"></script>
+
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+
+<script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+
+<script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}

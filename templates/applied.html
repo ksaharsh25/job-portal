@@ -1,0 +1,114 @@
+{% extends 'base3.html' %}
+
+
+{% block content %}
+{% load static %}
+
+  
+    <div class="main-dashboard-content d-flex flex-column">
+    
+    
+    
+
+        <div class="sidemenu-area" style='z-index: 10'>
+            <div class="sidemenu-header" >
+            
+            {% comment %} <a class="navbar-brand" href="index.html">
+                <img src="{% static 'assets/images/logo.png' %}" class="logo-one" alt="Logo">
+                <img src="{% static 'assets/images/logo.png' %}" class="logo-two" alt="Logo">
+                </a>  {% endcomment %}
+    <div class="responsive-burger-menu d-block d-lg-none">
+    <span class="top-bar"></span>
+    <span class="middle-bar"></span>
+    <span class="bottom-bar"></span>
+    </div>
+    </div>
+<div class="sidemenu-body">
+    <ul class="sidemenu-nav metisMenu h-70" id="sidemenu-nav" data-simplebar>
+   
+    <li class="nav-item">
+        <a href="../Dashboard_My_Profile" class="nav-link">
+        <span class="icon"><i class="ri-user-3-line"></i></span>
+        <span class="menu-title">My Profile</span>
+        </a>
+        </li>    
+    <li class="nav-item">
+    <a href="../LoginRegisterPopup" class="nav-link">
+    <span class="icon"><i class="ri-file-list-line"></i></span>
+    <span class="menu-title">My Resume</span>
+    </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="/applied/{{ request.session.seeker_id }}" class="nav-link">
+        <span class="icon"><i class="ri-briefcase-line"></i></span>
+        <span class="menu-title">Applied Jobs</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="/jobseeker/logout" class="nav-link">
+        <span class="icon"><i class="ri-logout-circle-r-line"></i></span>
+        <span class="menu-title">Log out</span>
+        </a>
+        </li>
+    
+    </div>
+    </div>
+
+
+<div class="breadcrumb-area">
+<h1>Applied Jobs</h1>
+<ol class="breadcrumb">
+<li class="item"><a href="dashboard.html">Home</a></li>
+<li class="item">Applied Jobs</li>
+</ol>
+</div>
+
+
+<div class="dashboard-jobs-box">
+{% comment %} {% if message %}
+
+<h6 color='red'> {{ message }}</h6>
+
+{% else  %}
+
+<h6><h6>
+
+{% endif %} {% endcomment %}
+<div class="row">
+{% for i in data %}
+<div class="col-lg-6">
+<a href="/JobDetails/{{ i.job_Application_name.id }}">
+<div class="recent-job-card recent-job-card-pt box-shadow">
+<div class="content">
+<div class="recent-job-img">
+<a href="/JobDetails/{{ i.job_Application_name.id }}">
+<img src=/media/{{i.employer.image}} style="width: 10rem; height:5rem;" alt="Images">
+</a>
+</div>
+<h3><a href="/JobDetails/{{ i.job_Application_name.id }}">{{i.job_Application_name}}</a></h3>
+<ul class="job-list1">
+<li><i class="ri-briefcase-line"></i> {{i.employer}}</li>
+<li><i class="ri-time-line"></i> {{i.created_date}}</li>
+</ul>
+<span><i class="ri-map-pin-line"></i> {{i.job_catagories}}</span>
+</div>
+<div class="job-sub-content">
+<ul class="job-list2">
+<li class="time">{{i.job_Application_name.job_type}}</li>
+</ul>
+<div class="price">status :{{i.selection_status}}</b></div>
+</div>
+
+</div>
+
+ </div>
+{% endfor %}
+</div>
+</div>
+</a>
+</div> 
+
+
+
+{% endblock %}

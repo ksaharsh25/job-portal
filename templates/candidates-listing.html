@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="inner-banner">
+<div class="container">
+ <div class="inner-title text-center">
+<h3>Candidates Listing</h3>
+</div>
+</div>
+</div>
+
+
+
+<div align="center" padding="0px">
+<div class="col-lg-8">
+<div class="candidates-topper">
+<div class="row align-items-center">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row pt-45 justify-content-center">
+    {% for i in data  %}
+<div class="col-lg-6 col-sm-6">
+<div class="freelancers-card">
+<a href="#">
+<img src="{{ i.profile_image.url }}" alt="Images">
+</a>
+<div class="title">
+<h3>
+<a href="#">{{i.full_name}}</a>
+</h3>
+
+</div>
+<p>{{i.job_category}}</p>
+<div class="rating">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill rating-color"></i>
+</div>
+<div class="sub-title">
+
+<span class="sub-title2">job type : <b>{{i.looking_for}}</b></span>
+</div>
+</div>
+
+</div>
+{% endfor %}
+
+
+
+
+
+
+<div class="employers-cv-area">
+    <div class="container">
+    <div class="employers-cv-bg">
+    <div class="row align-items-center">
+    <div class="col-lg-8">
+    <div class="employers-cv-content">
+    <h2>Let Employers Find You</h2>
+    <div class="bar"></div>
+    <p>Advertise your jobs to millions of monthly users and search 15.8 million CV in our database.</p>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class="employers-cv-btn">
+    {% if request.session.jobseeker %}
+        <a href="/LoginRegisterPopup">
+         Upload Your CV
+         </a>
+     {% else %}
+        <a href="/jobseeker/login">
+         Upload Your CV
+         </a>
+     {% endif %}
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+
+</div>
+</div>
+</div>
+</div>
+</div>    
+</div>{% endblock %}
